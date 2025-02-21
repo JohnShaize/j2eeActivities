@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Student</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container Styles */
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #000;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      align-self: flex-start;
+      font-weight: bold;
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="date"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #000;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Button Styles */
+    button[type="submit"] {
+      background-color: #000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #333;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Back Link Styles */
+    .back-link {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-link:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Add Student</h1>
+  <form th:action="@{/addStudent}" th:object="${student}" method="post">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required placeholder="Enter name" />
+
+    <label>Age:</label>
+    <input type="number" th:field="*{age}" required placeholder="Enter age" />
+
+    <label>Gender:</label>
+    <input type="text" th:field="*{gender}" required placeholder="Enter gender" />
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required placeholder="Enter email" />
+
+    <label>City:</label>
+    <input type="text" th:field="*{city}" required placeholder="Enter city" />
+
+    <label>Date of Birth:</label>
+    <input type="date" th:field="*{dateOfBirth}" required />
+
+    <button type="submit">Add Student</button>
+  </form>
+  <a href="/students" class="back-link">Back to Student List</a>
+</div>
+</body>
+</html>
